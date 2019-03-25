@@ -74,6 +74,16 @@
         }
 
         function createRandomUsers() {
+            var iconBase =
+                'http://maps.google.com/mapfiles/';
+            var icons = {
+                tree: {
+                    icon: iconBase + 'kml/shapes/parks.png'
+                },
+                caution: {
+                    icon: iconBase + 'kml/shapes/caution.png'
+                }
+            };
             let newUser = {};
             for (i = 0; i < 10; i++) {
                 if (i % 2 === 0) { // if it's an even number we'll get a random female
@@ -103,6 +113,7 @@
                     var marker = new google.maps.Marker({
                         position: userLatLong,
                         map: map,
+                        icon: icons.tree,
                         title: firstNameCapitalized
                     });
                 })
@@ -112,17 +123,14 @@
 
         /*
         var iconBase =
-            'https://developers.google.com/maps/documentation/javascript/examples/full/images/';
+            'http://maps.google.com/mapfiles/';
 
         var icons = {
-          parking: {
-            icon: iconBase + 'parking_lot_maps.png'
+          tree: {
+            icon: iconBase + 'kml/shapes/parks.png'
           },
-          library: {
-            icon: iconBase + 'library_maps.png'
-          },
-          info: {
-            icon: iconBase + 'info-i_maps.png'
+          caution: {
+            icon: iconBase + 'kml/shapes/caution.png'
           }
         };
         */
