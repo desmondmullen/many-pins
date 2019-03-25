@@ -63,7 +63,7 @@
             initMapLatLong = userLatitude, userLongitude;
             var userLatLong = { lat: userLatitude, lng: userLongitude };
             map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 2,
+                zoom: 3,
                 center: userLatLong
             });
             var marker = new google.maps.Marker({
@@ -113,7 +113,7 @@
                     var marker = new google.maps.Marker({
                         position: userLatLong,
                         map: map,
-                        icon: icons.tree,
+                        icon: icons.tree.icon,
                         title: firstNameCapitalized
                     });
                 })
