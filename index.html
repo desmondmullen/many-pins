@@ -63,7 +63,7 @@
             initMapLatLong = userLatitude, userLongitude;
             var userLatLong = { lat: userLatitude, lng: userLongitude };
             map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 3,
+                zoom: 2,
                 center: userLatLong
             });
             var marker = new google.maps.Marker({
@@ -78,7 +78,8 @@
                 'http://maps.google.com/mapfiles/';
             var icons = {
                 tree: {
-                    icon: iconBase + 'kml/shapes/parks.png'
+                    icon: '/parks_small.png'
+                    // icon: iconBase + 'kml/shapes/parks.png'
                 },
                 caution: {
                     icon: iconBase + 'kml/shapes/caution.png'
