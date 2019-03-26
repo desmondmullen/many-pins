@@ -29,7 +29,7 @@
 <body>
     <div id="map"></div>
     <script>
-        console.log('v1.3');
+        console.log('v1.31');
         var userLatitude = 35.8235;
         var userLongitude = -78.8256;
         var initMapLatLong;
@@ -87,7 +87,7 @@
                 }
             };
             let newUser = {};
-            for (i = 0; i < 10; i++) {
+            for (i = 0; i < 300; i++) {
                 if (i % 2 === 0) { // if it's an even number we'll get a random female
                     queryURL = 'https://randomuser.me/api/?gender=female'
                 } else {
@@ -114,7 +114,6 @@
                     $.get(oceanCheckUrl, function (response, status) {
                         console.log(Object.keys(response));
                         if (!Object.keys(response).includes('ocean')) {
-                            console.log('response ' + JSON.stringify(response));
                             usersArray.push(newUser);
                             var userLatLong = { lat: latitude, lng: longitude };
                             var marker = new google.maps.Marker({
