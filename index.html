@@ -39,6 +39,7 @@
         var request;
         const usersArray = [];
         let queryURL;
+        let breakFlag = false;
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -88,6 +89,7 @@
             };
             let newUser = {};
             for (i = 0; i < 200; i++) {
+                if (breakFlag === true) { break };
                 if (i % 2 === 0) { // if it's an even number we'll get a random female
                     queryURL = 'https://randomuser.me/api/?gender=female'
                 } else {
@@ -114,7 +116,7 @@
                     $.get(oceanCheckUrl, function (response, status) {
                         if (!Object.keys(response).includes('throttle')) {
                             console.log('request was throttled');
-                            break;
+                            breakFlag = true;
                         } else {
                             if (!Object.keys(response).includes('ocean')) {
                                 usersArray.push(newUser);
