@@ -112,15 +112,20 @@
                     };
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=desmondmullen&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
-                        if (!Object.keys(response).includes('ocean')) {
-                            usersArray.push(newUser);
-                            var userLatLong = { lat: latitude, lng: longitude };
-                            var marker = new google.maps.Marker({
-                                position: userLatLong,
-                                map: map,
-                                icon: icons.tree.icon,
-                                title: firstNameCapitalized
-                            });
+                        if (!Object.keys(response).includes('throttle')) {
+                            console.log('request was throttled');
+                            break;
+                        } else {
+                            if (!Object.keys(response).includes('ocean')) {
+                                usersArray.push(newUser);
+                                var userLatLong = { lat: latitude, lng: longitude };
+                                var marker = new google.maps.Marker({
+                                    position: userLatLong,
+                                    map: map,
+                                    icon: icons.tree.icon,
+                                    title: firstNameCapitalized
+                                });
+                            }
                         }
                     });
                 })
