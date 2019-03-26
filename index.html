@@ -86,7 +86,7 @@
                 }
             };
             let newUser = {};
-            for (i = 0; i < 300; i++) {
+            for (i = 0; i < 10; i++) {
                 if (i % 2 === 0) { // if it's an even number we'll get a random female
                     queryURL = 'https://randomuser.me/api/?gender=female'
                 } else {
@@ -109,13 +109,18 @@
                         longitude: longitude,
                         nation: nation
                     };
-                    usersArray.push(newUser);
-                    var userLatLong = { lat: latitude, lng: longitude };
-                    var marker = new google.maps.Marker({
-                        position: userLatLong,
-                        map: map,
-                        icon: icons.tree.icon,
-                        title: firstNameCapitalized
+                    let oceanCheckUrl = `http://api.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=desmondmullen&style=full`
+                    $.get(queryURL, function (response, status) {
+                        console.log('response ' + response);
+                        console.log('status ' + status);
+                        usersArray.push(newUser);
+                        var userLatLong = { lat: latitude, lng: longitude };
+                        var marker = new google.maps.Marker({
+                            position: userLatLong,
+                            map: map,
+                            icon: icons.tree.icon,
+                            title: firstNameCapitalized
+                        });
                     });
                 })
             };
