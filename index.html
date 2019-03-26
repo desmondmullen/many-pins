@@ -112,6 +112,9 @@
                     };
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=desmondmullen&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
+                        if (Object.values(response).indexOf('could not find') > -1) {
+                            console.log('could not find');
+                        }
                         console.log('response ' + JSON.stringify(response));
                         usersArray.push(newUser);
                         var userLatLong = { lat: latitude, lng: longitude };
