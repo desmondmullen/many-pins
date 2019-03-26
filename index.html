@@ -29,7 +29,7 @@
 <body>
     <div id="map"></div>
     <script>
-        console.log('v1.29');
+        console.log('v1.3');
         var userLatitude = 35.8235;
         var userLongitude = -78.8256;
         var initMapLatLong;
@@ -113,18 +113,17 @@
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=desmondmullen&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         console.log(Object.keys(response));
-                        if (Object.keys(response).includes('ocean')) {
-                            console.log('ocean!');
+                        if (!Object.keys(response).includes('ocean')) {
+                            console.log('response ' + JSON.stringify(response));
+                            usersArray.push(newUser);
+                            var userLatLong = { lat: latitude, lng: longitude };
+                            var marker = new google.maps.Marker({
+                                position: userLatLong,
+                                map: map,
+                                icon: icons.tree.icon,
+                                title: firstNameCapitalized
+                            });
                         }
-                        console.log('response ' + JSON.stringify(response));
-                        usersArray.push(newUser);
-                        var userLatLong = { lat: latitude, lng: longitude };
-                        var marker = new google.maps.Marker({
-                            position: userLatLong,
-                            map: map,
-                            icon: icons.tree.icon,
-                            title: firstNameCapitalized
-                        });
                     });
                 })
             };
