@@ -115,6 +115,7 @@
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=desmondmullen&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         if (!Object.keys(response).includes('throttle')) {
+                            console.log(breakFlag);
                             console.log('request was throttled');
                             breakFlag = true;
                         } else {
