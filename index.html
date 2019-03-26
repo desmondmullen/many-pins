@@ -110,8 +110,8 @@
                         nation: nation
                     };
                     let oceanCheckUrl = `http://api.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=desmondmullen&style=full`
-                    $.get(queryURL, function (response, status) {
-                        console.log('response ' + JSON.stringify(response.results[0]));
+                    $.get(queryURL, function (oceanResponse, status) {
+                        console.log('response ' + JSON.stringify(oceanResponse.results[0]));
                         usersArray.push(newUser);
                         var userLatLong = { lat: latitude, lng: longitude };
                         var marker = new google.maps.Marker({
