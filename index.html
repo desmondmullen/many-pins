@@ -115,22 +115,22 @@
                     let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         console.log(response);
-                        if (!Object.keys(response).includes('throttle')) {
-                            console.log(breakFlag);
-                            console.log('request was throttled');
-                            breakFlag = true;
-                        } else {
-                            if (!Object.keys(response).includes('ocean')) {
-                                usersArray.push(newUser);
-                                var userLatLong = { lat: latitude, lng: longitude };
-                                var marker = new google.maps.Marker({
-                                    position: userLatLong,
-                                    map: map,
-                                    icon: icons.tree.icon,
-                                    title: firstNameCapitalized
-                                });
-                            }
+                        // if (!Object.keys(response).includes('throttle')) {
+                        //     console.log(breakFlag);
+                        //     console.log('request was throttled');
+                        //     breakFlag = true;
+                        // } else {
+                        if (!Object.keys(response).includes('ocean')) {
+                            usersArray.push(newUser);
+                            var userLatLong = { lat: latitude, lng: longitude };
+                            var marker = new google.maps.Marker({
+                                position: userLatLong,
+                                map: map,
+                                icon: icons.tree.icon,
+                                title: firstNameCapitalized
+                            });
                         }
+                        // }
                     });
                 })
             };
