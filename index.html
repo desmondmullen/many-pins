@@ -112,7 +112,7 @@
                         longitude: longitude,
                         nation: nation
                     };
-                    let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=vivianmullen&style=full`
+                    let oceanCheckUrl = `https://secure.geonames.org/oceanJSON?formatted=true&lat=${latitude}&lng=${longitude}&username=angiespong&style=full`
                     $.get(oceanCheckUrl, function (response, status) {
                         if (!Object.keys(response).includes('throttle')) {
                             console.log(breakFlag);
